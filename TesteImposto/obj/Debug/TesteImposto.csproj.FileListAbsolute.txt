@@ -1,0 +1,26 @@
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Debug\TesteImposto.exe.config
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Debug\TesteImposto.exe
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Debug\TesteImposto.pdb
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Debug\Imposto.Core.dll
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Debug\Imposto.Core.pdb
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csprojAssemblyReference.cache
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.FormImposto.resources
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.Properties.Resources.resources
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csproj.GenerateResource.cache
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csproj.CoreCompileInputs.cache
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csproj.CopyComplete
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.exe
+C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.pdb
+D:\net-lab-master\TesteImposto\TesteImposto\bin\Debug\TesteImposto.exe.config
+D:\net-lab-master\TesteImposto\TesteImposto\bin\Debug\TesteImposto.exe
+D:\net-lab-master\TesteImposto\TesteImposto\bin\Debug\TesteImposto.pdb
+D:\net-lab-master\TesteImposto\TesteImposto\bin\Debug\Imposto.Core.dll
+D:\net-lab-master\TesteImposto\TesteImposto\bin\Debug\Imposto.Core.pdb
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csprojAssemblyReference.cache
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.FormImposto.resources
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.Properties.Resources.resources
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csproj.GenerateResource.cache
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csproj.CoreCompileInputs.cache
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.csproj.CopyComplete
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.exe
+D:\net-lab-master\TesteImposto\TesteImposto\obj\Debug\TesteImposto.pdb
