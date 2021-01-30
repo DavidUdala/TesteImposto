@@ -4,6 +4,16 @@
     "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj": {}
   },
   "projects": {
+    "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj",
+        "projectName": "Imposto.Core",
+        "projectPath": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
     "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,7 +36,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
+                "projectPath": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -901,6 +901,15 @@
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "Imposto.Core/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Imposto.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Imposto.Core.dll": {}
+        }
       }
     }
   },
@@ -3494,10 +3503,16 @@
         "xunit.runner.visualstudio.2.4.0.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "Imposto.Core/1.0.0": {
+      "type": "project",
+      "path": "../Imposto.Core/Imposto.Core.csproj",
+      "msbuildProject": "../Imposto.Core/Imposto.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Imposto.Core >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "coverlet.collector >= 1.2.0",
       "xunit >= 2.4.0",
@@ -3529,7 +3544,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
+              "projectPath": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

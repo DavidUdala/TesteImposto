@@ -49,32 +49,39 @@ namespace TesteImposto
 
         private void buttonGerarNotaFiscal_Click(object sender, EventArgs e)
         {
-
-            if (IsValid())
+            try
             {
-                NotaFiscalService service = new NotaFiscalService();
-                Pedido pedido = new Pedido();
+                if (IsValid())
+                {
+                    NotaFiscalService service = new NotaFiscalService();
+                    Pedido pedido = new Pedido();
 
-                pedido.EstadoOrigem = txtEstadoOrigem.Text;
-                pedido.EstadoDestino = txtEstadoDestino.Text;
-                pedido.NomeCliente = textBoxNomeCliente.Text;
+                    pedido.EstadoOrigem = txtEstadoOrigem.Text;
+                    pedido.EstadoDestino = txtEstadoDestino.Text;
+                    pedido.NomeCliente = textBoxNomeCliente.Text;
 
-                DataTable table = (DataTable)dataGridViewPedidos.DataSource;
+                    DataTable table = (DataTable)dataGridViewPedidos.DataSource;
 
-                foreach (DataRow row in table.Rows){
-                    pedido.ItensDoPedido.Add(
-                        new PedidoItem()
-                        {
-                            Brinde = Convert.ToBoolean(row["Brinde"]),
-                            CodigoProduto = row["Codigo do produto"].ToString(),
-                            NomeProduto = row["Nome do produto"].ToString(),
-                            ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
-                        });
+                    foreach (DataRow row in table.Rows)
+                    {
+                        pedido.ItensDoPedido.Add(
+                            new PedidoItem()
+                            {
+                                Brinde = Convert.ToBoolean(row["Brinde"]),
+                                CodigoProduto = row["Codigo do produto"].ToString(),
+                                NomeProduto = row["Nome do produto"].ToString(),
+                                ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
+                            });
+                    }
+
+                    service.GerarNotaFiscal(pedido);
+                    MessageBox.Show("Operação efetuada com sucesso", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CleanControls(this.Controls);
                 }
-
-                service.GerarNotaFiscal(pedido);
-                MessageBox.Show("Operação efetuada com sucesso", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CleanControls(this.Controls);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,7 +91,8 @@ namespace TesteImposto
             {
                 if (ctrl is TextBox)
                     ((TextBox)(ctrl)).Text = string.Empty;
-                if (ctrl is DataGridView){
+                if (ctrl is DataGridView)
+                {
                     DataTable table = (DataTable)((DataGridView)(ctrl)).DataSource;
                     table.Rows.Clear();
                 }
@@ -108,7 +116,8 @@ namespace TesteImposto
             if (string.IsNullOrEmpty(txtEstadoDestino.Text) || !UF.Contains(txtEstadoDestino.Text.ToUpper()))
                 message = message + "Digite um estado de destino válido.\r\n";
 
-            if (!string.IsNullOrEmpty(message)){
+            if (!string.IsNullOrEmpty(message))
+            {
                 MessageBox.Show(message, "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

@@ -14,7 +14,7 @@ namespace Imposto.Core.Service
             string[] estados = { "RJ", "PE", "MG", "PB", "PR", "PI", "RO", "SE", "TO", "PA", "SP" };
 
             if (!estados.Contains(estadoDestino))
-                throw new Exception("Não existe uma regra de CFO para destino informado!");
+                throw new Exception("Não existe uma regra de CFO para o destino informado!");
 
             switch (estadoDestino)
             {

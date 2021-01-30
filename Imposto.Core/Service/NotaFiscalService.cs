@@ -1,5 +1,6 @@
 ﻿using Imposto.Core.Domain;
 using Imposto.Core.Data;
+using System;
 
 namespace Imposto.Core.Service
 {
@@ -8,14 +9,22 @@ namespace Imposto.Core.Service
 
         public void GerarNotaFiscal(Domain.Pedido pedido)
         {
-            NotaFiscal notaFiscal = new NotaFiscal()
-               .EmitirNotaFiscal(pedido)
-               .GerarNotaFiscalXML();
+            try
+            {
 
-            notaFiscal = new NotaFiscalRepository().P_Nota_Fiscal(notaFiscal);
+                NotaFiscal notaFiscal = new NotaFiscal()
+                   .EmitirNotaFiscal(pedido)
+                   .GerarNotaFiscalXML();
 
-            notaFiscal.ItensDaNotaFiscal
-                .ForEach(t => new NotaFiscalItemRepository().P_Nota_Fiscal_Item(t, notaFiscal.Id));
+                notaFiscal = new NotaFiscalRepository().P_Nota_Fiscal(notaFiscal);
+
+                notaFiscal.ItensDaNotaFiscal
+                    .ForEach(t => new NotaFiscalItemRepository().P_Nota_Fiscal_Item(t, notaFiscal.Id));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

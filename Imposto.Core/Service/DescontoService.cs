@@ -1,9 +1,7 @@
-﻿using Imposto.Core.Domain;
-using System;
+﻿using Imposto.Core.Data;
+using Imposto.Core.Domain;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Imposto.Core.Service
 {
@@ -11,8 +9,8 @@ namespace Imposto.Core.Service
     {
         public void RealizarDesconto(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem, string estadoDestino)
         {
-            string[] UF = {"SP","RJ","MG","ES" };
-            if(UF.Contains(estadoDestino))
+            List<Estado> lsEstado = new EstadoRepository().P_ESTADOS_SEL();
+            if (lsEstado.Any(t => t.Uf == estadoDestino && t.Regiao == "SUDESTE")) 
                 notaFiscalItem.Desconto = pedidoItem.ValorItemPedido * 0.1;
         }
     }

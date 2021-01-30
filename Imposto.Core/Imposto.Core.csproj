@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\EstadoRepository.cs" />
     <Compile Include="Data\NotaFiscalItemRepository.cs" />
     <Compile Include="Data\NotaFiscalRepository.cs" />
+    <Compile Include="Domain\Estado.cs" />
     <Compile Include="Domain\NotaFiscal.cs" />
     <Compile Include="Domain\NotaFiscalItem.cs" />
     <Compile Include="Domain\Pedido.cs" />

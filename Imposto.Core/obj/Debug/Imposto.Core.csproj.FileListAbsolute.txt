@@ -6,7 +6,7 @@ C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\Imposto.Core\obj\Debu
 C:\Users\david Udala\Downloads\net-lab-master\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.pdb
 D:\net-lab-master\TesteImposto\Imposto.Core\bin\Debug\Imposto.Core.dll
 D:\net-lab-master\TesteImposto\Imposto.Core\bin\Debug\Imposto.Core.pdb
-D:\net-lab-master\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.csprojAssemblyReference.cache
 D:\net-lab-master\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.csproj.CoreCompileInputs.cache
 D:\net-lab-master\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.dll
 D:\net-lab-master\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.pdb
+D:\net-lab-master\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.csprojAssemblyReference.cache

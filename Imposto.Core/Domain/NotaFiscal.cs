@@ -17,7 +17,6 @@ namespace Imposto.Core.Domain
         public int NumeroNotaFiscal { get; set; }
         public int Serie { get; set; }
         public string NomeCliente { get; set; }
-
         public string EstadoDestino { get; set; }
         public string EstadoOrigem { get; set; }
 
@@ -32,33 +31,41 @@ namespace Imposto.Core.Domain
 
         public NotaFiscal EmitirNotaFiscal(Pedido pedido)
         {
-            NumeroNotaFiscal = 99999;
-            Serie = new Random().Next(Int32.MaxValue);
-            NomeCliente = pedido.NomeCliente;
-
-            EstadoDestino = pedido.EstadoDestino;
-            EstadoOrigem = pedido.EstadoOrigem;
-
-
-            foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
+            try
             {
-                NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
+                NumeroNotaFiscal = 99999;
+                Serie = new Random().Next(Int32.MaxValue);
+                NomeCliente = pedido.NomeCliente;
 
-                new CFOFService().RealizaCFO(notaFiscalItem, EstadoDestino);
+                EstadoDestino = pedido.EstadoDestino;
+                EstadoOrigem = pedido.EstadoOrigem;
 
-                new ICMSService().RealizaICMS(notaFiscalItem, itemPedido, EstadoDestino, EstadoOrigem);
 
-                new IPIService().RealizaIPI(notaFiscalItem, itemPedido);
+                foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
+                {
+                    NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
 
-                new DescontoService().RealizarDesconto(notaFiscalItem, itemPedido, EstadoDestino);
+                    new CFOFService().RealizaCFO(notaFiscalItem, EstadoDestino);
 
-                notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
-                notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
-                
-                ItensDaNotaFiscal.Add(notaFiscalItem);
+                    new ICMSService().RealizaICMS(notaFiscalItem, itemPedido, EstadoDestino, EstadoOrigem);
+
+                    new IPIService().RealizaIPI(notaFiscalItem, itemPedido);
+
+                    new DescontoService().RealizarDesconto(notaFiscalItem, itemPedido, EstadoDestino);
+
+                    notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
+                    notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
+
+                    ItensDaNotaFiscal.Add(notaFiscalItem);
+                }
+
+                return this;
             }
+            catch (Exception ex )
+            {
 
-            return this;
+                throw ex;
+            }
         }
 
         public NotaFiscal GerarNotaFiscalXML()
