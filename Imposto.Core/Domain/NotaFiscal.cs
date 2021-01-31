@@ -27,6 +27,7 @@ namespace Imposto.Core.Domain
             ItensDaNotaFiscal = new List<NotaFiscalItem>();
         }
 
+        Dictionary<string, string> dictCFOP = new Dictionary<string, string>();
 
 
         public NotaFiscal EmitirNotaFiscal(Pedido pedido)
@@ -40,7 +41,6 @@ namespace Imposto.Core.Domain
                 EstadoDestino = pedido.EstadoDestino;
                 EstadoOrigem = pedido.EstadoOrigem;
 
-
                 foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
@@ -53,6 +53,9 @@ namespace Imposto.Core.Domain
 
                     new DescontoService().RealizarDesconto(notaFiscalItem, itemPedido, EstadoDestino);
 
+
+
+
                     notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
                     notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
 
@@ -61,7 +64,7 @@ namespace Imposto.Core.Domain
 
                 return this;
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
 
                 throw ex;

@@ -11,13 +11,11 @@ namespace Imposto.Core.Service
     {
         public void RealizaICMS(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem, string estadoDestino, string estadoOrigem)
         {
-            if (estadoDestino == estadoOrigem || pedidoItem.Brinde)
-            {
+            if (estadoDestino == estadoOrigem || pedidoItem.Brinde){
                 notaFiscalItem.TipoIcms = "60";
                 notaFiscalItem.AliquotaIcms = 0.18;
             }
-            else
-            {
+            else{
                 notaFiscalItem.TipoIcms = "10";
                 notaFiscalItem.AliquotaIcms = 0.17;
             }
