@@ -21,8 +21,6 @@ namespace Imposto.Core.Service
 
             if (chkDescontoSudeste)
                 notaFiscalItem.Desconto = pedidoItem.ValorItemPedido * 0.1;
-
-            //return notaFiscalItem;
         }
 
         public string Realiza(string estadoOrigem, string estadoDestino)

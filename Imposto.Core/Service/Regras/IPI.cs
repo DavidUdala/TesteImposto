@@ -16,7 +16,6 @@ namespace Imposto.Core.Service.Imposto
 
             notaFiscalItem.ValorIpi = notaFiscalItem.BaseIpi * (notaFiscalItem.AliquotaIpi / 100);
 
-            //return notaFiscalItem;
         }
 
         public string Realiza(string estadoOrigem, string estadoDetino)

@@ -24,7 +24,6 @@ namespace Imposto.Core.Service.Imposto
 
             notaFiscalItem.ValorIcms = notaFiscalItem.BaseIcms * notaFiscalItem.AliquotaIcms;
 
-            //return notaFiscalItem;
         }
 
         public string Realiza(string estadoOrigem, string estadoDestino)
