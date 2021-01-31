@@ -20,14 +20,14 @@ AS
 BEGIN
 	SELECT 
 	Cfop as 'CFOP',
-	BaseIcms as 'Valor Total Base de ICMS',
-	ValorIcms as 'Valor Total do ICMS',
-	BaseIpi as 'Valor Total Base de IPI',
-	ValorIpi as 'Valor Total do IPI'
+	SUM(BaseIcms) as 'Valor Total Base de ICMS',
+	SUM(ValorIcms) as 'Valor Total do ICMS',
+	SUM(BaseIpi) as 'Valor Total Base de IPI',
+	SUM(ValorIpi) as 'Valor Total do IPI'
 	
 	FROM NotaFiscalItem
 
-	ORDER BY Cfop 
+	GROUP BY Cfop 
 END
 GO
 GRANT EXECUTE ON dbo.P_NOTA_FISCAL_ITEM_IMPOSTOS_CFOP TO [public]
