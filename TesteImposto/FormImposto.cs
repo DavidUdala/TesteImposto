@@ -10,7 +10,6 @@ namespace TesteImposto
 {
     public partial class FormImposto : Form
     {
-
         public FormImposto()
         {
             InitializeComponent();
@@ -79,8 +78,6 @@ namespace TesteImposto
                 MessageBox.Show(ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         public bool IsValid()
         {

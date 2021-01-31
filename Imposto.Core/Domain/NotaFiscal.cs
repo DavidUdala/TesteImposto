@@ -27,9 +27,6 @@ namespace Imposto.Core.Domain
             ItensDaNotaFiscal = new List<NotaFiscalItem>();
         }
 
-        Dictionary<string, string> dictCFOP = new Dictionary<string, string>();
-
-
         public NotaFiscal EmitirNotaFiscal(Pedido pedido)
         {
             try
@@ -46,15 +43,12 @@ namespace Imposto.Core.Domain
                 foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
-
+                    
                     notaFiscalItem.Cfop = cfop;
-
+                    
                     new ICMSService().RealizaICMS(notaFiscalItem, itemPedido, EstadoOrigem, EstadoDestino);
-
                     new IPIService().RealizaIPI(notaFiscalItem, itemPedido);
-
                     new DescontoService().RealizarDesconto(notaFiscalItem, itemPedido, EstadoDestino);
-
 
                     notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
                     notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
