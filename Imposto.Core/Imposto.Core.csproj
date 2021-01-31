@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Conexao.cs" />
     <Compile Include="Data\NotaFiscalItemRepository.cs" />
     <Compile Include="Data\NotaFiscalRepository.cs" />
     <Compile Include="Domain\NotaFiscal.cs" />

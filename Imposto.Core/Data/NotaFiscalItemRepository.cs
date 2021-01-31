@@ -6,17 +6,15 @@ using System.Data.SqlClient;
 
 namespace Imposto.Core.Data
 {
-    public class NotaFiscalItemRepository
+    public class NotaFiscalItemRepository : Conexao
     {
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DEFAULT"].ConnectionString);
-
         public NotaFiscalItem P_Nota_Fiscal_Item(NotaFiscalItem notaFiscalItem, int IdNotaFiscal)
         {
             try
             {
-                conn.Open();
+                base.conectar();
 
-                SqlCommand cmd = new SqlCommand("P_NOTA_FISCAL_ITEM", conn);
+                cmd = new SqlCommand("P_NOTA_FISCAL_ITEM", base.conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -45,7 +43,7 @@ namespace Imposto.Core.Data
             }
             finally
             {
-                conn.Close();
+                base.desconectar();
             }
         }
     }
