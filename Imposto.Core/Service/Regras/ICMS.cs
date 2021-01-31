@@ -27,7 +27,7 @@ namespace Imposto.Core.Service.Imposto
             return notaFiscalItem;
         }
 
-        public NotaFiscalItem Realiza(Pedido pedido)
+        public string Realiza(string estadoOrigem, string estadoDestino)
         {
             throw new System.NotImplementedException();
         }

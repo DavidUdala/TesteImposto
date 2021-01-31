@@ -12,13 +12,8 @@ namespace TesteImpostoTeste
         [Fact]
         public void RealizaCFOSeOrigemCorreta()
         {
-            Pedido pedido = new Pedido();
-            pedido.EstadoOrigem = "SP";
-            pedido.EstadoDestino = "RJ";
 
-            NotaFiscalItem notaFiscalItem = CFOP.Realiza(pedido);
-
-            Assert.Equal("6.000", notaFiscalItem.Cfop);
+            Assert.Equal("6.000", CFOP.Realiza("SP","RJ"));
         }
     }
 }

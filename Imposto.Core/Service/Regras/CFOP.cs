@@ -9,35 +9,28 @@ namespace Imposto.Core.Service.Imposto
 {
     public class CFOP : IRegra
     {
-        public NotaFiscalItem Realiza(Pedido pedido)
+        Dictionary<string, string> dictCFOP = new Dictionary<string, string>()
         {
-            var output = new NotaFiscalItem();
-
+           { "RJ", "6.000" },
+           { "PE", "6.001" },
+           { "MG", "6.002" },
+           { "PB", "6.003" },
+           { "PR", "6.004" },
+           { "PI", "6.005" },
+           { "RO", "6.006" },
+           { "SE", "6.007" },
+           { "TO", "6.008" },
+           { "SP", "6.009" },
+           { "PA", "6.010" }
+         };
+        public string Realiza(string estadoOrigem, string estadoDestino)
+        {
             string cfop = "";
 
-            if (pedido.EstadoOrigem.ToUpper().Equals("SP") || pedido.EstadoOrigem.ToUpper().Equals("MG"))
-            {
-                Dictionary<string, string> dictCFOP = new Dictionary<string, string>();
+            if (estadoOrigem.ToUpper().Equals("SP") || estadoOrigem.ToUpper().Equals("MG"))
+                dictCFOP.TryGetValue(estadoDestino.ToUpper(), out cfop);
 
-                dictCFOP.Add("RJ", "6.000");
-                dictCFOP.Add("PE", "6.001");
-                dictCFOP.Add("MG", "6.002");
-                dictCFOP.Add("PB", "6.003");
-                dictCFOP.Add("PR", "6.004");
-                dictCFOP.Add("PI", "6.005");
-                dictCFOP.Add("RO", "6.006");
-                dictCFOP.Add("SE", "6.007");
-                dictCFOP.Add("TO", "6.008");
-                dictCFOP.Add("SP", "6.009");
-                dictCFOP.Add("PA", "6.010");
-
-                dictCFOP.TryGetValue(pedido.EstadoDestino.ToUpper(), out cfop);
-
-                output.Cfop = cfop;
-            }
-            else
-                output.Cfop = "";
-            return output;
+            return cfop;
         }
         public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {

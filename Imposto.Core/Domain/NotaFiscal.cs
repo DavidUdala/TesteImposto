@@ -44,11 +44,14 @@ namespace Imposto.Core.Domain
                 EstadoDestino = pedido.EstadoDestino;
                 EstadoOrigem = pedido.EstadoOrigem;
 
+                string _cfop = cfop.Realiza(EstadoOrigem, EstadoDestino);
+
                 foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
 
-                    notaFiscalItem = cfop.Realiza(pedido);
+                    notaFiscalItem.Cfop = _cfop;
+
                     notaFiscalItem = icms.Calcula(itemPedido, pedido, notaFiscalItem);
                     notaFiscalItem = ipi.Calcula(itemPedido, pedido, notaFiscalItem);
                     notaFiscalItem = desconto.Calcula(itemPedido, pedido, notaFiscalItem);

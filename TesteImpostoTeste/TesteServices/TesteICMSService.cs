@@ -20,12 +20,12 @@ namespace TesteImpostoTeste.TesteServices
             PedidoItem pedidoItem = new PedidoItem();
             Pedido pedido = new Pedido();
 
-            pedidoItem.ValorItemPedido = 1000.00;
-            
             pedido.EstadoOrigem = "SP";
             pedido.EstadoDestino = "MG";
 
-            notaFiscalItem = CFOP.Realiza(pedido);
+            pedidoItem.ValorItemPedido = 1000.00;
+
+            notaFiscalItem.Cfop = CFOP.Realiza("SP","MG");
 
             ICMS.Calcula(pedidoItem, pedido, notaFiscalItem);
 
@@ -41,13 +41,13 @@ namespace TesteImpostoTeste.TesteServices
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
             Pedido pedido = new Pedido();
-            
+
+            pedido.EstadoOrigem = "MG";
+            pedido.EstadoDestino = "MG";
+
             pedidoItem.ValorItemPedido = 1000.00;
 
-            pedido.EstadoDestino = "MG";
-            pedido.EstadoOrigem = "MG";
-
-            notaFiscalItem = CFOP.Realiza(pedido);
+            notaFiscalItem.Cfop = CFOP.Realiza("MG", "MG");
 
             ICMS.Calcula(pedidoItem, pedido, notaFiscalItem);
 
@@ -62,14 +62,14 @@ namespace TesteImpostoTeste.TesteServices
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
             Pedido pedido = new Pedido();
+
+            pedido.EstadoOrigem = "MG";
+            pedido.EstadoDestino = "SP";
             
             pedidoItem.ValorItemPedido = 1000.00;
             pedidoItem.Brinde = true;
 
-            pedido.EstadoOrigem = "MG";
-            pedido.EstadoDestino = "SP";
-
-            notaFiscalItem = CFOP.Realiza(pedido);
+            notaFiscalItem.Cfop = CFOP.Realiza("MG","SP");
 
             ICMS.Calcula(pedidoItem, pedido, notaFiscalItem);
 
