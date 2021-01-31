@@ -41,19 +41,19 @@ namespace Imposto.Core.Domain
                 EstadoDestino = pedido.EstadoDestino;
                 EstadoOrigem = pedido.EstadoOrigem;
 
+                string cfop = new CFOFService().RealizaCFO(EstadoOrigem, EstadoDestino);
+
                 foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
 
-                    new CFOFService().RealizaCFO(notaFiscalItem, EstadoDestino);
+                    notaFiscalItem.Cfop = cfop;
 
-                    new ICMSService().RealizaICMS(notaFiscalItem, itemPedido, EstadoDestino, EstadoOrigem);
+                    new ICMSService().RealizaICMS(notaFiscalItem, itemPedido, EstadoOrigem, EstadoDestino);
 
                     new IPIService().RealizaIPI(notaFiscalItem, itemPedido);
 
                     new DescontoService().RealizarDesconto(notaFiscalItem, itemPedido, EstadoDestino);
-
-
 
 
                     notaFiscalItem.NomeProduto = itemPedido.NomeProduto;

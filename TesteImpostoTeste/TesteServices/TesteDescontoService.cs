@@ -14,14 +14,26 @@ namespace TesteImpostoTeste.TesteServices
         DescontoService descontoService = new DescontoService();
 
         [Fact]
-        public void RealizaDescontoSemBrinde()
+        public void RealizaDescontoSeEstadoSudeste()
         {
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
-            PedidoItem pedidoItem = new PedidoItem() {CodigoProduto = "01", Brinde = false, NomeProduto = "Caneta", ValorItemPedido = 123 };
+            PedidoItem pedidoItem = new PedidoItem();
+            pedidoItem.ValorItemPedido = 1000;
 
-            //descontoService.RealizarDesconto(notaFiscalItem, pedidoItem, "SP");
+            descontoService.RealizarDesconto(notaFiscalItem, pedidoItem, "SP");
 
-            Assert.Equal(100, 100);
+            Assert.Equal(100, notaFiscalItem.Desconto);
+        }
+        [Fact]
+        public void RealizaDescontoSeEstadoNaoForSudeste()
+        {
+            NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
+            PedidoItem pedidoItem = new PedidoItem();
+            pedidoItem.ValorItemPedido = 1000;
+
+            descontoService.RealizarDesconto(notaFiscalItem, pedidoItem, "PE");
+
+            Assert.Equal(0, notaFiscalItem.Desconto);
         }
     }
 }

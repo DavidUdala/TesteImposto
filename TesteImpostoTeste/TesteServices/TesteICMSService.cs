@@ -18,7 +18,7 @@ namespace TesteImpostoTeste.TesteServices
             PedidoItem pedidoItem = new PedidoItem();
 
             pedidoItem.ValorItemPedido = 1000.00;
-            new CFOFService().RealizaCFO(notaFiscalItem, "MG");
+            new CFOFService().RealizaCFO("SP", "MG");
 
             srvICMS.RealizaICMS(notaFiscalItem,pedidoItem,"MG","SP");
 
@@ -36,7 +36,7 @@ namespace TesteImpostoTeste.TesteServices
             PedidoItem pedidoItem = new PedidoItem();
 
             pedidoItem.ValorItemPedido = 1000.00;
-            new CFOFService().RealizaCFO(notaFiscalItem, "MG");
+            new CFOFService().RealizaCFO("MG", "MG");
 
             srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "MG", "MG");
 
@@ -52,33 +52,16 @@ namespace TesteImpostoTeste.TesteServices
             PedidoItem pedidoItem = new PedidoItem();
 
             pedidoItem.ValorItemPedido = 1000.00;
-            new CFOFService().RealizaCFO(notaFiscalItem, "SP");
+            pedidoItem.Brinde = true;
 
-            srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "SP", "SP");
+            new CFOFService().RealizaCFO("MG", "SP");
+
+            srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "MG", "SP");
 
             Assert.Equal("60", notaFiscalItem.TipoIcms);
             Assert.Equal(0.18, notaFiscalItem.AliquotaIcms);
             Assert.Equal(900, notaFiscalItem.BaseIcms);
             Assert.Equal(162, notaFiscalItem.ValorIcms);
         }
-        [Fact]
-        public void TesteRealizaICMSQuandoCFOPIgualA6009SemBrindOuDiferenteEstado()
-        {
-
-            NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
-            PedidoItem pedidoItem = new PedidoItem();
-
-            pedidoItem.ValorItemPedido = 1000.00;
-            new CFOFService().RealizaCFO(notaFiscalItem, "SP");
-
-            srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "SP", "RJ");
-
-            Assert.Equal("10", notaFiscalItem.TipoIcms);
-            Assert.Equal(0.17, notaFiscalItem.AliquotaIcms);
-            Assert.Equal(900, notaFiscalItem.BaseIcms);
-            Assert.Equal(153, notaFiscalItem.ValorIcms);
-        }
-
-
     }
 }

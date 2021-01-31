@@ -9,7 +9,7 @@ namespace Imposto.Core.Service
 {
     public class ICMSService
     {
-        public void RealizaICMS(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem, string estadoDestino, string estadoOrigem)
+        public void RealizaICMS(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem, string estadoOrigem, string estadoDestino)
         {
             if (estadoDestino == estadoOrigem || pedidoItem.Brinde){
                 notaFiscalItem.TipoIcms = "60";

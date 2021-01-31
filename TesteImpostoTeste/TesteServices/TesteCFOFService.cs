@@ -7,13 +7,11 @@ namespace TesteImpostoTeste
     public class TesteCFOFService
     {
         [Fact]
-        public void TesteRealizaCFO()
+        public void RealizaCFOSeOrigemCorreta()
         {
-            NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
+            string cfop = new CFOFService().RealizaCFO("SP","RJ");
 
-            new CFOFService().RealizaCFO(notaFiscalItem,"RJ");
-
-            Assert.Equal("6.000", notaFiscalItem.Cfop);
+            Assert.Equal("6.000", cfop);
         }
     }
 }

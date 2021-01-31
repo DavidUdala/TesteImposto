@@ -7,10 +7,21 @@ namespace Imposto.Core.Service
 {
     public class DescontoService
     {
+        internal enum EstadosSudeste
+        {
+            SP,
+            RJ,
+            MG,
+            ES
+        }
+
         public void RealizarDesconto(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem, string estadoDestino)
         {
-            List<Estado> lsEstado = new EstadoRepository().P_ESTADOS_SEL();
-            if (lsEstado.Any(t => t.Uf == estadoDestino && t.Regiao == "SUDESTE")) 
+            EstadosSudeste getSudeste;
+
+            bool chkDescontoSudeste =  EstadosSudeste.TryParse(estadoDestino, out getSudeste);
+
+            if(chkDescontoSudeste)
                 notaFiscalItem.Desconto = pedidoItem.ValorItemPedido * 0.1;
         }
     }
