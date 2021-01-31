@@ -1,5 +1,6 @@
 ﻿using Imposto.Core.Domain;
 using Imposto.Core.Service;
+using Imposto.Core.Service.Imposto;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,19 +10,24 @@ namespace TesteImpostoTeste.TesteServices
 {
     public class TesteICMSService
     {
-        ICMSService srvICMS = new ICMSService();
+        ICMS ICMS = new ICMS();
+        CFOP CFOP = new CFOP();
 
         [Fact]
         public void TesteRealizaICMSQuandoEstadosDiferentesECfopDiferenteDe6009()
         {
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
+            Pedido pedido = new Pedido();
 
             pedidoItem.ValorItemPedido = 1000.00;
-            new CFOFService().RealizaCFO("SP", "MG");
+            
+            pedido.EstadoOrigem = "SP";
+            pedido.EstadoDestino = "MG";
 
-            srvICMS.RealizaICMS(notaFiscalItem,pedidoItem,"MG","SP");
+            notaFiscalItem = CFOP.Realiza(pedido);
 
+            ICMS.Calcula(pedidoItem, pedido, notaFiscalItem);
 
             Assert.Equal("10" ,notaFiscalItem.TipoIcms);
             Assert.Equal(0.17, notaFiscalItem.AliquotaIcms );
@@ -34,11 +40,16 @@ namespace TesteImpostoTeste.TesteServices
         {
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
-
+            Pedido pedido = new Pedido();
+            
             pedidoItem.ValorItemPedido = 1000.00;
-            new CFOFService().RealizaCFO("MG", "MG");
 
-            srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "MG", "MG");
+            pedido.EstadoDestino = "MG";
+            pedido.EstadoOrigem = "MG";
+
+            notaFiscalItem = CFOP.Realiza(pedido);
+
+            ICMS.Calcula(pedidoItem, pedido, notaFiscalItem);
 
             Assert.Equal("60", notaFiscalItem.TipoIcms);
             Assert.Equal(0.18, notaFiscalItem.AliquotaIcms);
@@ -50,13 +61,17 @@ namespace TesteImpostoTeste.TesteServices
         {
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
-
+            Pedido pedido = new Pedido();
+            
             pedidoItem.ValorItemPedido = 1000.00;
             pedidoItem.Brinde = true;
 
-            notaFiscalItem.Cfop = new CFOFService().RealizaCFO("MG", "SP"); 
+            pedido.EstadoOrigem = "MG";
+            pedido.EstadoDestino = "SP";
 
-            srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "MG", "SP");
+            notaFiscalItem = CFOP.Realiza(pedido);
+
+            ICMS.Calcula(pedidoItem, pedido, notaFiscalItem);
 
             Assert.Equal("60", notaFiscalItem.TipoIcms);
             Assert.Equal(0.18, notaFiscalItem.AliquotaIcms);

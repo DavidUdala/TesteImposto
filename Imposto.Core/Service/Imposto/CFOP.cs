@@ -1,19 +1,21 @@
 ﻿using Imposto.Core.Domain;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imposto.Core.Service
+namespace Imposto.Core.Service.Imposto
 {
-    public class CFOFService
+    public class CFOP : IRegra
     {
-        public string RealizaCFO(string estadoOrigem, string estadoDestino)
+        public NotaFiscalItem Realiza(Pedido pedido)
         {
+            var output = new NotaFiscalItem();
+
             string cfop = "";
-            if ("SP" == estadoOrigem.ToUpper() || "MG" == estadoOrigem.ToUpper())
+
+            if (pedido.EstadoOrigem.ToUpper().Equals("SP") || pedido.EstadoOrigem.ToUpper().Equals("MG"))
             {
                 Dictionary<string, string> dictCFOP = new Dictionary<string, string>();
 
@@ -29,11 +31,17 @@ namespace Imposto.Core.Service
                 dictCFOP.Add("SP", "6.009");
                 dictCFOP.Add("PA", "6.010");
 
-                dictCFOP.TryGetValue(estadoDestino.ToUpper(), out cfop);
+                dictCFOP.TryGetValue(pedido.EstadoDestino.ToUpper(), out cfop);
+
+                output.Cfop = cfop;
             }
             else
-                cfop = "";
-            return cfop;
+                output.Cfop = "";
+            return output;
+        }
+        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
+        {
+            throw new NotImplementedException();
         }
     }
 }

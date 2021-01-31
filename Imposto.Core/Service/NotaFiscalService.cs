@@ -6,12 +6,10 @@ namespace Imposto.Core.Service
 {
     public class NotaFiscalService
     {
-
         public void GerarNotaFiscal(Domain.Pedido pedido)
         {
             try
             {
-
                 NotaFiscal notaFiscal = new NotaFiscal()
                    .EmitirNotaFiscal(pedido)
                    .GerarNotaFiscalXML();

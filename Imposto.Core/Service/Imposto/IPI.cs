@@ -1,15 +1,11 @@
 ﻿using Imposto.Core.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Imposto.Core.Service
+namespace Imposto.Core.Service.Imposto
 {
-    public class IPIService
+    public class IPI : IRegra
     {
-        public void RealizaIPI(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem)
+        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {
             notaFiscalItem.BaseIpi = pedidoItem.ValorItemPedido;
 
@@ -19,6 +15,13 @@ namespace Imposto.Core.Service
                 notaFiscalItem.AliquotaIpi = 10;
 
             notaFiscalItem.ValorIpi = notaFiscalItem.BaseIpi * (notaFiscalItem.AliquotaIpi / 100);
+
+            return notaFiscalItem;
+        }
+
+        public NotaFiscalItem Realiza(Pedido pedido)
+        {
+            throw new NotImplementedException();
         }
     }
 }

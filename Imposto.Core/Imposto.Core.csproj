@@ -48,10 +48,11 @@
     <Compile Include="Domain\Pedido.cs" />
     <Compile Include="Domain\PedidoItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\CFOFService.cs" />
-    <Compile Include="Service\DescontoService.cs" />
-    <Compile Include="Service\ICMSService.cs" />
-    <Compile Include="Service\IPIService.cs" />
+    <Compile Include="Service\Imposto\Desconto.cs" />
+    <Compile Include="Service\Imposto\CFOP.cs" />
+    <Compile Include="Service\Imposto\ICMS.cs" />
+    <Compile Include="Service\Imposto\IRegra.cs" />
+    <Compile Include="Service\Imposto\IPI.cs" />
     <Compile Include="Service\NotaFiscalService.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

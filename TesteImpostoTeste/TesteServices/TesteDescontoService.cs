@@ -11,16 +11,19 @@ namespace TesteImpostoTeste.TesteServices
 {
     public class TesteDescontoService
     {
-        DescontoService descontoService = new DescontoService();
+        Desconto desconto = new Desconto();
 
         [Fact]
         public void RealizaDescontoSeEstadoSudeste()
         {
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
+            Pedido pedido = new Pedido();
+
+            pedido.EstadoDestino = "SP";
             pedidoItem.ValorItemPedido = 1000;
 
-            descontoService.RealizarDesconto(notaFiscalItem, pedidoItem, "SP");
+            desconto.Calcula(pedidoItem, pedido, notaFiscalItem);
 
             Assert.Equal(100, notaFiscalItem.Desconto);
         }
@@ -29,9 +32,12 @@ namespace TesteImpostoTeste.TesteServices
         {
             NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
             PedidoItem pedidoItem = new PedidoItem();
+            Pedido pedido = new Pedido();
+
+            pedido.EstadoDestino = "PE";
             pedidoItem.ValorItemPedido = 1000;
 
-            descontoService.RealizarDesconto(notaFiscalItem, pedidoItem, "PE");
+            desconto.Calcula(pedidoItem, pedido, notaFiscalItem);
 
             Assert.Equal(0, notaFiscalItem.Desconto);
         }

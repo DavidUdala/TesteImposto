@@ -34,7 +34,7 @@ namespace TesteImposto
             DataTable table = new DataTable("pedidos");
             table.Columns.Add(new DataColumn("Nome do produto", typeof(string)));
             table.Columns.Add(new DataColumn("Codigo do produto", typeof(string)));
-            table.Columns.Add(new DataColumn("Valor", typeof(decimal)));
+            table.Columns.Add(new DataColumn("Valor", typeof(decimal))) ;
             table.Columns.Add(new DataColumn("Brinde", typeof(bool)));
 
             table.Columns[3].DefaultValue = false;

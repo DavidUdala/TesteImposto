@@ -1,4 +1,5 @@
 ﻿using Imposto.Core.Service;
+using Imposto.Core.Service.Imposto;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -27,6 +28,11 @@ namespace Imposto.Core.Domain
             ItensDaNotaFiscal = new List<NotaFiscalItem>();
         }
 
+        IRegra cfop = new CFOP();
+        IRegra icms = new ICMS();
+        IRegra ipi = new IPI();
+        IRegra desconto = new Desconto();
+
         public NotaFiscal EmitirNotaFiscal(Pedido pedido)
         {
             try
@@ -38,21 +44,17 @@ namespace Imposto.Core.Domain
                 EstadoDestino = pedido.EstadoDestino;
                 EstadoOrigem = pedido.EstadoOrigem;
 
-                string cfop = new CFOFService().RealizaCFO(EstadoOrigem, EstadoDestino);
-
                 foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
-                    
-                    notaFiscalItem.Cfop = cfop;
-                    
-                    new ICMSService().RealizaICMS(notaFiscalItem, itemPedido, EstadoOrigem, EstadoDestino);
-                    new IPIService().RealizaIPI(notaFiscalItem, itemPedido);
-                    new DescontoService().RealizarDesconto(notaFiscalItem, itemPedido, EstadoDestino);
+
+                    notaFiscalItem = cfop.Realiza(pedido);
+                    notaFiscalItem = icms.Calcula(itemPedido, pedido, notaFiscalItem);
+                    notaFiscalItem = ipi.Calcula(itemPedido, pedido, notaFiscalItem);
+                    notaFiscalItem = desconto.Calcula(itemPedido, pedido, notaFiscalItem);
 
                     notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
                     notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
-
                     ItensDaNotaFiscal.Add(notaFiscalItem);
                 }
 

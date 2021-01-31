@@ -1,30 +1,35 @@
 ﻿using Imposto.Core.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Imposto.Core.Service
+namespace Imposto.Core.Service.Imposto
 {
-    public class ICMSService
+    public class ICMS : IRegra
     {
-        public void RealizaICMS(NotaFiscalItem notaFiscalItem, PedidoItem pedidoItem, string estadoOrigem, string estadoDestino)
+        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {
-            if (estadoDestino == estadoOrigem || pedidoItem.Brinde){
+
+            if (pedidoItem.Brinde || pedido.EstadoOrigem.Equals(pedido.EstadoDestino))
+            {
                 notaFiscalItem.TipoIcms = "60";
                 notaFiscalItem.AliquotaIcms = 0.18;
             }
-            else{
+            else
+            {
                 notaFiscalItem.TipoIcms = "10";
                 notaFiscalItem.AliquotaIcms = 0.17;
             }
-            if (notaFiscalItem.Cfop == "6.009")
+            if (notaFiscalItem.Cfop.Equals("6.009"))
                 notaFiscalItem.BaseIcms = pedidoItem.ValorItemPedido * 0.90; //redução de base
             else
                 notaFiscalItem.BaseIcms = pedidoItem.ValorItemPedido;
-            
+
             notaFiscalItem.ValorIcms = notaFiscalItem.BaseIcms * notaFiscalItem.AliquotaIcms;
+
+            return notaFiscalItem;
+        }
+
+        public NotaFiscalItem Realiza(Pedido pedido)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
