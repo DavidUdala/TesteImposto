@@ -60,8 +60,7 @@ namespace Imposto.Core
                     ((TextBox)(ctrl)).Text = string.Empty;
                 if (ctrl is DataGridView)
                 {
-                    DataTable table = (DataTable)((DataGridView)(ctrl)).DataSource;
-                    table.Rows.Clear();
+                    ((DataTable)((DataGridView)(ctrl)).DataSource).Rows.Clear();
                 }
             }
         }

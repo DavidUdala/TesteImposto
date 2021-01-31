@@ -24,5 +24,18 @@ namespace Imposto.Core.Domain
         public double AliquotaIpi { get; set; }
         public double ValorIpi { get; set; }
         public double Desconto { get; set; }
+
+
+        public NotaFiscalItem(PedidoItem pedidoItem )
+        {
+            this.NomeProduto = pedidoItem.NomeProduto;
+            this.CodigoProduto = pedidoItem.CodigoProduto;
+        }
+
+        public NotaFiscalItem()
+        {
+
+        }
+
     }
 }

@@ -5,7 +5,7 @@ namespace Imposto.Core.Service.Imposto
 {
     public class IPI : IRegra
     {
-        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
+        public void Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {
             notaFiscalItem.BaseIpi = pedidoItem.ValorItemPedido;
 
@@ -16,7 +16,7 @@ namespace Imposto.Core.Service.Imposto
 
             notaFiscalItem.ValorIpi = notaFiscalItem.BaseIpi * (notaFiscalItem.AliquotaIpi / 100);
 
-            return notaFiscalItem;
+            //return notaFiscalItem;
         }
 
         public string Realiza(string estadoOrigem, string estadoDetino)

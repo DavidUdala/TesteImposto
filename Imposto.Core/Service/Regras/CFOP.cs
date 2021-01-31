@@ -32,7 +32,7 @@ namespace Imposto.Core.Service.Imposto
 
             return cfop;
         }
-        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
+        public void Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {
             throw new NotImplementedException();
         }

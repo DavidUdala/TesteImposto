@@ -4,7 +4,7 @@ namespace Imposto.Core.Service.Imposto
 {
     public class ICMS : IRegra
     {
-        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
+        public void Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {
 
             if (pedidoItem.Brinde || pedido.EstadoOrigem.Equals(pedido.EstadoDestino))
@@ -24,7 +24,7 @@ namespace Imposto.Core.Service.Imposto
 
             notaFiscalItem.ValorIcms = notaFiscalItem.BaseIcms * notaFiscalItem.AliquotaIcms;
 
-            return notaFiscalItem;
+            //return notaFiscalItem;
         }
 
         public string Realiza(string estadoOrigem, string estadoDestino)

@@ -28,6 +28,7 @@ namespace Imposto.Core.Domain
             ItensDaNotaFiscal = new List<NotaFiscalItem>();
         }
 
+
         IRegra cfop = new CFOP();
         IRegra icms = new ICMS();
         IRegra ipi = new IPI();
@@ -48,16 +49,14 @@ namespace Imposto.Core.Domain
 
                 foreach (PedidoItem itemPedido in pedido.ItensDoPedido)
                 {
-                    NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
+                    NotaFiscalItem notaFiscalItem = new NotaFiscalItem(itemPedido);
 
                     notaFiscalItem.Cfop = _cfop;
 
-                    notaFiscalItem = icms.Calcula(itemPedido, pedido, notaFiscalItem);
-                    notaFiscalItem = ipi.Calcula(itemPedido, pedido, notaFiscalItem);
-                    notaFiscalItem = desconto.Calcula(itemPedido, pedido, notaFiscalItem);
+                    icms.Calcula(itemPedido, pedido, notaFiscalItem);
+                    ipi.Calcula(itemPedido, pedido, notaFiscalItem);
+                    desconto.Calcula(itemPedido, pedido, notaFiscalItem);
 
-                    notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
-                    notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
                     ItensDaNotaFiscal.Add(notaFiscalItem);
                 }
 

@@ -13,7 +13,7 @@ namespace Imposto.Core.Service
             SP, RJ, MG, ES
         }
 
-        public NotaFiscalItem Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
+        public void Calcula(PedidoItem pedidoItem, Pedido pedido, NotaFiscalItem notaFiscalItem)
         {
             EstadosSudeste getSudeste;
 
@@ -22,7 +22,7 @@ namespace Imposto.Core.Service
             if (chkDescontoSudeste)
                 notaFiscalItem.Desconto = pedidoItem.ValorItemPedido * 0.1;
 
-            return notaFiscalItem;
+            //return notaFiscalItem;
         }
 
         public string Realiza(string estadoOrigem, string estadoDestino)
