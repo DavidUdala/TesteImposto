@@ -54,7 +54,7 @@ namespace TesteImpostoTeste.TesteServices
             pedidoItem.ValorItemPedido = 1000.00;
             pedidoItem.Brinde = true;
 
-            new CFOFService().RealizaCFO("MG", "SP");
+            notaFiscalItem.Cfop = new CFOFService().RealizaCFO("MG", "SP"); 
 
             srvICMS.RealizaICMS(notaFiscalItem, pedidoItem, "MG", "SP");
 

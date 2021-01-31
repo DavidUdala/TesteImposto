@@ -1,14 +1,10 @@
 ﻿using Imposto.Core.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Imposto.Core.Domain;
+using Imposto.Core;
 
 namespace TesteImposto
 {
@@ -73,10 +69,9 @@ namespace TesteImposto
                                 ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
                             });
                     }
-
                     service.GerarNotaFiscal(pedido);
                     MessageBox.Show("Operação efetuada com sucesso", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CleanControls(this.Controls);
+                    Utils.CleanControls(this.Controls);
                 }
             }
             catch (Exception ex)
@@ -85,19 +80,7 @@ namespace TesteImposto
             }
         }
 
-        public void CleanControls(Control.ControlCollection controls)
-        {
-            foreach (var ctrl in controls)
-            {
-                if (ctrl is TextBox)
-                    ((TextBox)(ctrl)).Text = string.Empty;
-                if (ctrl is DataGridView)
-                {
-                    DataTable table = (DataTable)((DataGridView)(ctrl)).DataSource;
-                    table.Rows.Clear();
-                }
-            }
-        }
+
 
         public bool IsValid()
         {

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -23,7 +25,6 @@ namespace Imposto.Core
             {
                 throw ex;
             }
-
         }
         public static bool XmlDownload(string xml, string path, string fileName)
         {
@@ -48,10 +49,21 @@ namespace Imposto.Core
             }
             catch (Exception ex)
             {
-
                 return false;
             }
-
+        }
+        public static void CleanControls(Control.ControlCollection controls)
+        {
+            foreach (var ctrl in controls)
+            {
+                if (ctrl is TextBox)
+                    ((TextBox)(ctrl)).Text = string.Empty;
+                if (ctrl is DataGridView)
+                {
+                    DataTable table = (DataTable)((DataGridView)(ctrl)).DataSource;
+                    table.Rows.Clear();
+                }
+            }
         }
     }
 }

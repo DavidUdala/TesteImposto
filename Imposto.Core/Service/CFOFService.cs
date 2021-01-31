@@ -31,9 +31,8 @@ namespace Imposto.Core.Service
 
                 dictCFOP.TryGetValue(estadoDestino.ToUpper(), out cfop);
             }
-            if (string.IsNullOrEmpty(cfop))
-                throw new Exception("Não existe uma regra de CFO para o destino ou origem informado!");
-
+            else
+                cfop = "";
             return cfop;
         }
     }
