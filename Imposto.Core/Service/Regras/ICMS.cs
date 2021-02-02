@@ -17,7 +17,7 @@ namespace Imposto.Core.Service.Imposto
                 notaFiscalItem.TipoIcms = "10";
                 notaFiscalItem.AliquotaIcms = 0.17;
             }
-            if (notaFiscalItem.Cfop.Equals("6.009"))
+            if ("6.009".Equals(notaFiscalItem.Cfop))
                 notaFiscalItem.BaseIcms = pedidoItem.ValorItemPedido * 0.90; //redução de base
             else
                 notaFiscalItem.BaseIcms = pedidoItem.ValorItemPedido;

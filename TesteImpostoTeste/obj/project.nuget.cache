@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FOVhxY47fgACITrlrY5MFOsL9VxBt79vR8na2RHmVUNDknROfD6eYu7aQGJvbF5lDk41gVmcZ1qJLKsjD+0SEA==",
+  "dgSpecHash": "Bdvm/fAHgUvpJv+kqKw4n9g32UGlTcj3g6pianylvCE9wEFe7laNrWMwU04sM8oSUUszORC5aDDUPdvrkDLtyw==",
   "success": true,
-  "projectFilePath": "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj",
+  "projectFilePath": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\david\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

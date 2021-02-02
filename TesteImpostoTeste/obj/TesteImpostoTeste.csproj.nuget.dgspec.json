@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj": {}
+    "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj": {}
   },
   "projects": {
-    "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
+    "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj",
+        "projectUniqueName": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj",
         "projectName": "Imposto.Core",
-        "projectPath": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
+        "projectPath": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
       },
       "frameworks": {
         "net45": {}
       }
     },
-    "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj": {
+    "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj",
+        "projectUniqueName": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj",
         "projectName": "TesteImpostoTeste",
-        "projectPath": "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj",
+        "projectPath": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\TesteImpostoTeste.csproj",
         "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "D:\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\obj\\",
+        "outputPath": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\TesteImpostoTeste\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,8 +37,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
-                "projectPath": "D:\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
+              "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj": {
+                "projectPath": "D:\\Estudos\\Desafios\\net-lab-master\\TesteImposto\\Imposto.Core\\Imposto.Core.csproj"
               }
             }
           }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Imposto.Core.Domain;
 using Imposto.Core;
+using Imposto.Core.Service;
 
 namespace TesteImposto
 {

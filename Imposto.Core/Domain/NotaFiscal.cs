@@ -51,7 +51,7 @@ namespace Imposto.Core.Domain
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem(itemPedido);
 
-                    notaFiscalItem.Cfop = _cfop;
+                    notaFiscalItem.Cfop = _cfop == null ? "" : _cfop;
 
                     icms.Calcula(itemPedido, pedido, notaFiscalItem);
                     ipi.Calcula(itemPedido, pedido, notaFiscalItem);
